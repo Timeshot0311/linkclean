@@ -38,10 +38,14 @@ class ShareActivity : Activity() {
         // Amazon
         "tag", "linkCode", "linkId", "ascsubtag", "asc_campaign",
         "asc_source", "asc_refurl",
+        // Instagram
+        "igshid", "igsh",
+        // Spotify
+        "si", "context", "nd",
+        // YouTube
+        "feature", "pp",
         // Misc
-        "icid", "ncid", "yclid", "zanpid", "dclid", "igshid",
-        "si",  // Spotify share tracking
-        "feature", // YouTube old tracking
+        "icid", "ncid", "yclid", "zanpid", "dclid",
         "_hsenc", "_hsmi",
     )
 
@@ -53,7 +57,9 @@ class ShareActivity : Activity() {
             return
         }
 
+        // Some apps (Spotify, Instagram) pass the URL via ClipData instead of EXTRA_TEXT
         val sharedText = intent.getStringExtra(Intent.EXTRA_TEXT)
+            ?: intent.clipData?.getItemAt(0)?.text?.toString()
         val url = extractUrl(sharedText)
 
         if (url == null) {
