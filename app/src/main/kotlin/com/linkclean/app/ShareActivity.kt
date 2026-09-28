@@ -39,7 +39,7 @@ class ShareActivity : Activity() {
         "tag", "linkCode", "linkId", "ascsubtag", "asc_campaign",
         "asc_source", "asc_refurl",
         // Instagram
-        "igshid", "igsh",
+        "igshid", "igsh", "stkn",
         // Spotify
         "si", "context", "nd",
         // YouTube
